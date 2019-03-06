@@ -1,0 +1,45 @@
+<aura:component Controller="BadgesGivenToMeController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="badges" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="slds-box slds-scrollable_x"> 
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title=""></div>
+                    </th>
+                    <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="Badge">Badge</div>
+                    </th>
+                    <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="Message">Message</div>
+                    </th>
+                    <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="Given by">Given by</div>
+                    </th>
+                </tr>
+            </thead>
+            <aura:iteration items="{!v.badges}" var="item">
+                <tbody>
+                    <td scope="row" class="slds-cell-wrap">
+                        <span class="slds-avatar slds-avatar--large">
+                            <div class="slds-truncate" title="{!item.ImageUrl}"><img src="{!item.ImageUrl}"/></div>
+                        </span>
+                    </td>
+                    <td scope="row" class="slds-cell-wrap">
+                        <div align="center" class="slds-grid slds-has-flexi-truncate" title="{!item.Definition.Name}">{!item.Definition.Name}</div>
+                    </td>
+                    <td scope="row" class="slds-cell-wrap">
+                        <div class="slds-grid slds-has-flexi-truncate" title="{!item.Message}">{!item.Message}</div>
+                    </td>
+                    <td scope="row" class="slds-cell-wrap">
+                        <div align="center" class="slds-grid slds-has-flexi-truncate" title="{!item.Giver.Name}">{!item.Giver.Name}</div>
+                    </td>
+                </tbody>
+            </aura:iteration>
+        </table>
+    </div>
+    
+    
+</aura:component>
